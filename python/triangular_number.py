@@ -8,6 +8,25 @@ What is the value of the first triangle number to have over five hundred divisor
 
 def main():
 
+    add = 3
+    number = 3
+    triangle_number = 0
+    while True:
+        if find_divisors(number):
+            print number
+            break
+
+        add += 1
+        number += add
+
+def find_divisors(number):
+    divisors = []
+    for n in range(1, number):
+        if number % n == 0:
+            divisors.append(n)
+
+    if len(divisors) >= 500:
+        return True
 
 
 
