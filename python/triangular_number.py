@@ -7,7 +7,7 @@ What is the value of the first triangle number to have over five hundred divisor
 
 
 def main():
-
+    """
     add = 3
     number = 3
     triangle_number = 0
@@ -18,17 +18,20 @@ def main():
 
         add += 1
         number += add
+    """
+    print find_largest_factor(20)
 
-def find_divisors(number):
-    divisors = []
-    for n in range(1, number):
-        if number % n == 0:
-            divisors.append(n)
+def find_largest_factor(n):
+    i = 2
 
-    if len(divisors) >= 500:
-        return True
+    # this doesn't work for perfect squares, lets fix it
+    while i * i < n:
+        if n % i:
+            i += 1
+        else:
+            n //= i
 
-
+    return i
 
 if __name__ == "__main__":
     main()
