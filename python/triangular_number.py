@@ -19,21 +19,23 @@ def main():
         add += 1
         number += add
     """
-    print find_largest_factor(20)
+    print find_prime_factors(20)
 
-def find_largest_factor(n):
+def find_prime_factors(n):
     i = 2
+    factors = []
 
     # this doesn't work for perfect squares, lets fix it
     while i * i <= n:
-        print i
-        print n
-        if n % i:   # because this return true if the number has a remander, we add one
+        if n % i:   # because this return true if the number has a remainder, we add one
             i += 1
         else:
+            factors.append(n)
             n //= i
+            factors.append(n)
+            factors.append(i)
 
-    return n
+    return factors
 
 if __name__ == "__main__":
     main()
