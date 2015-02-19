@@ -25,13 +25,15 @@ def find_largest_factor(n):
     i = 2
 
     # this doesn't work for perfect squares, lets fix it
-    while i * i < n:
-        if n % i:
+    while i * i <= n:
+        print i
+        print n
+        if n % i:   # because this return true if the number has a remander, we add one
             i += 1
         else:
             n //= i
 
-    return i
+    return n
 
 if __name__ == "__main__":
     main()
