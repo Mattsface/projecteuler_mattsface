@@ -7,34 +7,64 @@ What is the value of the first triangle number to have over five hundred divisor
 
 
 def main():
-    """
-    add = 3
+
+    add_number = 2
     number = 3
-    triangle_number = 0
+
     while True:
-        if find_divisors(number):
-            print number
+        prime_factors = find_prime_factors(number)
+        primes = sort_primes(prime_factors)
+        divisors = find_number_of_divisors(primes)
+
+        if divisors >= 500:
+            print number, divisors
             break
 
-        add += 1
-        number += add
+        add_number += 1
+        number += add_number
+
+
+def find_number_of_divisors(primes):
     """
-    print find_prime_factors(20)
+    find the number of divisors
+    """
+
+    total = []
+    for key, value in primes.items():
+        total.append(value + 1)
+
+    return reduce(lambda x, y: x * y, total)
+
+def sort_primes(prime_factors):
+    """
+    create a dictionary of the prime numbers and the number of occurrences
+    """
+    primes = {}
+
+    for n in prime_factors:
+        if n in primes:
+            continue
+        n_occurrence = prime_factors.count(n)
+        primes[n] = n_occurrence
+
+    return primes
 
 def find_prime_factors(n):
+    """
+    Find prime factors of n
+    """
+
     i = 2
     factors = []
 
-    # this doesn't work for perfect squares, lets fix it
     while i * i <= n:
-        if n % i:   # because this return true if the number has a remainder, we add one
+        if n % i:
             i += 1
         else:
-            factors.append(n)
-            n //= i
-            factors.append(n)
             factors.append(i)
-
+            n //= i
+    if n > 1:
+        factors.append(n)
     return factors
 
 if __name__ == "__main__":
