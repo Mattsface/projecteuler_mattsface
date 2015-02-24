@@ -6,22 +6,54 @@ class Triangle_number
   end
 
 
+  def number_of_divisors
+    @factors = find_prime_factors
+    sort_primes
+    total = []
+    @primes.each do |number, occurrences|
+      total << (occurrences + 1)
+    end
+    return total.inject(:*)
+  end
+
+  private
+
   def find_prime_factors
     i = 2
     factors = []
-
-    while i * i <= @number
-      if @number % i != 0
+    n = @number
+    while i * i <= n
+      if n % i != 0
         i = i + i
       else
         factors << i
-        @number = @number / i
+        n = n / i
       end
-    if @number > 1
-      factors << @number
     end
+    if n > 1
+      factors << n
+    end
+  return factors
+  end
 
-    puts factors
+  def sort_primes
+    @primes = {}
+    @factors.each do |f|
+      next if @primes.key?(f)
+      number_of_occurrences = @factors.count(f)
+      @primes[f] = number_of_occurrences
     end
   end
 end
+
+n = 2
+divisors = 0
+until divisors >= 500
+  t = Triangle_number.new(n)
+  divisors = t.number_of_divisors
+  n = n + 1
+  p divisors
+  p n
+end
+
+puts n
