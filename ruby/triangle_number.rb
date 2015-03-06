@@ -8,7 +8,9 @@ class Triangle_number
 
   def number_of_divisors
     @factors = find_prime_factors
-    sort_primes
+    p @factors
+    p sort_primes
+    p @primes
     total = []
     @primes.each do |number, occurrences|
       total << (occurrences + 1)
@@ -43,17 +45,17 @@ class Triangle_number
       number_of_occurrences = @factors.count(f)
       @primes[f] = number_of_occurrences
     end
+    return @primes
   end
 end
 
-n = 2
+n = 500
 divisors = 0
-until divisors >= 500
+#until divisors >= 500
   t = Triangle_number.new(n)
   divisors = t.number_of_divisors
   n = n + 1
   p divisors
-  p n
-end
+#end
 
 puts n
