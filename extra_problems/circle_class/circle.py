@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 from math import *
 
-
-
 class Circle(object):
     def __init__(self, radius):
         self.radius = radius
@@ -50,25 +48,3 @@ class Circle(object):
     def __lt__(self, other):
         return self.radius < other.radius
 
-
-if __name__ == "__main__":
-    c = Circle(3)
-    assert c.diameter == 6
-    assert c.radius == 3
-
-    c = Circle.from_diameter(6)
-    assert c.diameter == 6
-    print c
-    print repr(c)
-
-    c1 = Circle(3)
-    c2 = Circle(4)
-    c3 = c1 + c2
-    print repr(c3)
-    c4 = c3 * 3
-    print repr(c4)
-    c5 = 3 * c4
-    print repr(c5)
-    print c5 > c4
-    print c5 == c5
-    print c4 < c3
