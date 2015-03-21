@@ -41,7 +41,14 @@ class Circle(object):
         else:
             return self.__mul__(other)
 
+    def __eq__(self, other):
+        return self.radius == other.radius
 
+    def __gt__(self, other):
+        return self.radius > other.radius
+
+    def __lt__(self, other):
+        return self.radius < other.radius
 
 
 if __name__ == "__main__":
@@ -62,3 +69,6 @@ if __name__ == "__main__":
     print repr(c4)
     c5 = 3 * c4
     print repr(c5)
+    print c5 > c4
+    print c5 == c5
+    print c4 < c3
