@@ -17,8 +17,14 @@ def find_number(numbers):
     """
     lets find that highest number
     """
-    for n in numbers:
-        print n
+    x = 0
+    y = 13
+    digits = numbers[0:13]
+    array = []
+    for digit in digits:
+        array.appent(int(digit))
+
+    total = sum(array)
 
 
 if __name__ == "__main__":
