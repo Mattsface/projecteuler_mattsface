@@ -27,6 +27,10 @@ class Circle(object):
     def __repr__(self):
         return "Circle({})".format(self.radius)
 
+    def __add__(self, other_circle):
+        total_radius = self.radius + other_circle.radius
+        return Circle(total_radius)
+
 
 
 if __name__ == "__main__":
@@ -38,3 +42,8 @@ if __name__ == "__main__":
     assert c.diameter == 6
     print c
     print repr(c)
+
+    c1 = Circle(3)
+    c2 = Circle(4)
+    c3 = c1 + c2
+    print repr(c3)
